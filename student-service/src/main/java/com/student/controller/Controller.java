@@ -46,7 +46,7 @@ public class Controller {
 	@PutMapping("/update")
 	public  ResponseEntity<Object> update(@RequestBody Student student){
 		studentService.updateStudentDetails(student);
-		return new ResponseEntity<>(HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/getAll")
@@ -57,6 +57,6 @@ public class Controller {
 	@DeleteMapping("/deleteStudent/{rollNumber}")
 	public ResponseEntity<Object> deleteStudent(@PathVariable String rollNumber){
 		studentService.deleteStudent(rollNumber);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}
 }

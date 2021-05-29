@@ -5,13 +5,14 @@ package com.student.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.student.model.Student;
 
 /**
  * @author Prateek Maurya
  *
  */
-
 
 public interface StudentService {
 
