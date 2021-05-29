@@ -5,8 +5,6 @@ package com.student.exception;
 
 import org.springframework.stereotype.Component;
 
-import lombok.Data;
-
 /**
  * @author Prateek Maurya
  *

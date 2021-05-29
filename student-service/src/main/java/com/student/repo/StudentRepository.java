@@ -16,8 +16,8 @@ import com.student.model.Student;
 @Repository
 public interface StudentRepository extends MongoRepository<Student, String>{
 
-	Student findByRollNumber(String rollNumber);
+	Student findByEnrollmentNumber(String enrollmentNumber);
 
-	void deleteByRollNumber(String rollNumber);
+	void deleteByEnrollmentNumber(String enrollmentNumber);
 
 }

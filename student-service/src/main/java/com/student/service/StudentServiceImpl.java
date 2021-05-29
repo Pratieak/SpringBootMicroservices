@@ -29,7 +29,7 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public void registerStudent(Student student) throws MongoWriteException{
 		if(student.getFirstName().isEmpty() || student.getClassNumber().isEmpty() 
-				|| student.getSectionName().isEmpty() || student.getRollNumber().isEmpty()
+				|| student.getSectionName().isEmpty() || student.getEnrollmentNumber().isEmpty()
 				|| student.getPhoneNumber().isEmpty() || student.getGuardianNumber().isEmpty())
 			throw new EmptyInputException("601", "One or more input value/s are empty");
 		if( student.getPhoneNumber().length()!=10 || student.getGuardianNumber().length()!=10 )
@@ -38,15 +38,15 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Student getStudentDetails(String rollNumber) {	
-		if(studentRepository.findByRollNumber(rollNumber)==null)
+	public Student getStudentDetails(String enrollmentNumber) {	
+		if(studentRepository.findByEnrollmentNumber(enrollmentNumber)==null)
 			throw new NoRecordExistsException("404", "Student Record Not Found");
-		return studentRepository.findByRollNumber(rollNumber);
+		return studentRepository.findByEnrollmentNumber(enrollmentNumber);
 	}
 
 	@Override
 	public void updateStudentDetails(Student student) {
-		Student s = studentRepository.findByRollNumber(student.getRollNumber());
+		Student s = studentRepository.findByEnrollmentNumber(student.getEnrollmentNumber());
 		s.setEmailId(student.getEmailId());
 		s.setPhoneNumber(student.getPhoneNumber());
 		s.setGuardianNumber(student.getGuardianNumber());
@@ -57,15 +57,15 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public List<Student> getAllStudentDetails() {	
 		if(studentRepository.findAll().isEmpty())
-			throw new NoRecordExistsException("404", "Student Record Not Found");
+			throw new NoRecordExistsException("404", "No Record Found");
 		return studentRepository.findAll();
 	}
 
 	@Override
-	public void deleteStudent(String rollNumber) {
-		if(studentRepository.findByRollNumber(rollNumber)==null)
-			throw new NoRecordExistsException("404", "Student Record Not Found");
-		studentRepository.deleteByRollNumber(rollNumber);
+	public void deleteStudent(String enrollmentNumber) {
+		if(studentRepository.findByEnrollmentNumber(enrollmentNumber)==null)
+			throw new NoRecordExistsException("404", "No Record Found");
+		studentRepository.deleteByEnrollmentNumber(enrollmentNumber);
 	}
 
 }

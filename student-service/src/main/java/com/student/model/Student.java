@@ -14,7 +14,7 @@ import lombok.Data;
 public class Student {
 	
 	@Id
-	private String rollNumber;
+	private String enrollmentNumber;
 	private String classNumber;
 	private String sectionName;
 	private String firstName;

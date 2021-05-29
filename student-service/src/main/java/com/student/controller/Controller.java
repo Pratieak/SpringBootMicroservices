@@ -38,9 +38,9 @@ public class Controller {
 		return new ResponseEntity<>(HttpStatus.CREATED);		
 	}
 	
-	@GetMapping("/getStudent/{rollNumber}")
-	public ResponseEntity<Student> getStudent(@PathVariable String rollNumber){
-		return new ResponseEntity<Student>(studentService.getStudentDetails(rollNumber),HttpStatus.OK);
+	@GetMapping("/getStudent/{enrollmentNumber}")
+	public ResponseEntity<Student> getStudent(@PathVariable String enrollmentNumber){
+		return new ResponseEntity<Student>(studentService.getStudentDetails(enrollmentNumber),HttpStatus.OK);
 	}
 	
 	@PutMapping("/update")
@@ -54,9 +54,9 @@ public class Controller {
 		return new ResponseEntity<List<Student>>( studentService.getAllStudentDetails(),HttpStatus.OK);
 	}
 
-	@DeleteMapping("/deleteStudent/{rollNumber}")
-	public ResponseEntity<Object> deleteStudent(@PathVariable String rollNumber){
-		studentService.deleteStudent(rollNumber);
+	@DeleteMapping("/deleteStudent/{enrollmentNumber}")
+	public ResponseEntity<Object> deleteStudent(@PathVariable String enrollmentNumber){
+		studentService.deleteStudent(enrollmentNumber);
 		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}
 }
