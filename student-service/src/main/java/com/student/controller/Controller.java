@@ -24,12 +24,14 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Prateek Maurya
  *
  */
 
+@Slf4j
 @RequestMapping("/student")
 @RestController
 public class Controller {
@@ -38,22 +40,25 @@ public class Controller {
 	StudentService studentService;
 	
 	
-	@Operation(summary = "This method registers the details of an individual student", 
-			   responses = { @ApiResponse( responseCode = "203", description = "Successful Operation", content = @Content),
+	@Operation( summary = "This method registers the details of an individual student", 
+			    responses = { @ApiResponse( responseCode = "203", description = "Successful Operation", content = @Content),
 					         @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true))) })	    
 	@PostMapping("/register")
 	public ResponseEntity<Object> register(@RequestBody Student student){
+		log.info( "***** ReqestEntity- student object = {}", student.toString() );
 		studentService.registerStudent(student);
 		return new ResponseEntity<>(HttpStatus.CREATED);		
 	}
 	
 	
-	@Operation(summary = "This method retrieves the registered details of an individual student using rollNumber",
-			   responses = { @ApiResponse( responseCode = "200", description = "Successful Operation", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+	@Operation( summary = "This method retrieves the registered details of an individual student using rollNumber",
+			    responses = { @ApiResponse( responseCode = "200", description = "Successful Operation", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
 					         @ApiResponse( responseCode = "404", description = "Not found", content = @Content),
 					         @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true))) })	    
 	@GetMapping("/getStudent/{enrollmentNumber}")
 	public ResponseEntity<Student> getStudent(@PathVariable String enrollmentNumber){
+		log.info( "***** ReqestEntity- student enrollNumber  = {}", enrollmentNumber );
+		log.info( "***** ResponseEntity- student object = {}", studentService.getStudentDetails(enrollmentNumber).toString() );
 		return new ResponseEntity<Student>(studentService.getStudentDetails(enrollmentNumber),HttpStatus.OK);
 	}
 	
@@ -63,6 +68,7 @@ public class Controller {
 				             @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true))) })	    
 	@PutMapping("/update")
 	public  ResponseEntity<Object> update(@RequestBody Student student){
+		log.info( "***** ReqestEntity- student object = {}", student.toString() );
 		studentService.updateStudentDetails(student);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
@@ -74,6 +80,7 @@ public class Controller {
 					   		 @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true)))})	    
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Student>> getAllStudents(){
+		log.info( "***** ResponseEntity- student object = {}", studentService.getAllStudentDetails().toString() );
 		return new ResponseEntity<List<Student>>( studentService.getAllStudentDetails(),HttpStatus.OK);
 	}
 
@@ -84,6 +91,7 @@ public class Controller {
 			   		 		  @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true)))})	    
 	@DeleteMapping("/deleteStudent/{enrollmentNumber}")
 	public ResponseEntity<Object> deleteStudent(@PathVariable String enrollmentNumber){
+		log.info( "***** ReqestEntity- student enrollNumber  = {}", enrollmentNumber );
 		studentService.deleteStudent(enrollmentNumber);
 		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}

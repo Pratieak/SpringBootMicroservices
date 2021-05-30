@@ -16,11 +16,14 @@ import com.student.exception.InvalidTelephoneNumberException;
 import com.student.exception.NoRecordExistsException;
 import com.student.model.CustomError;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @author Prateek Maurya
  *
  */
 
+@Slf4j
 @ControllerAdvice
 public class StudentControllerAdvice {
 	
@@ -32,6 +35,7 @@ public class StudentControllerAdvice {
 		customError.setTimestamp(LocalDateTime.now());
 		customError.setStatus((HttpStatus.NOT_FOUND.value()));
 		customError.setErrorCode(HttpStatus.BAD_REQUEST);
+		log.error("Error Details:= {}", customError.toString());
 		return new ResponseEntity<CustomError>(customError,HttpStatus.BAD_REQUEST);
 	}
 	
@@ -41,6 +45,7 @@ public class StudentControllerAdvice {
 		customError.setTimestamp(LocalDateTime.now());
 		customError.setStatus((HttpStatus.NOT_FOUND.value()));
 		customError.setErrorCode(HttpStatus.BAD_REQUEST);
+		log.error("Error Details:= {}", customError.toString());
 		return new ResponseEntity<CustomError>(customError,HttpStatus.BAD_REQUEST);
 	}	
 	
@@ -50,6 +55,7 @@ public class StudentControllerAdvice {
 		customError.setTimestamp(LocalDateTime.now());
 		customError.setStatus((HttpStatus.NOT_FOUND.value()));
 		customError.setErrorCode(HttpStatus.BAD_REQUEST);
+		log.error("Error Details:= {}", customError.toString());
 		return new ResponseEntity<CustomError>(customError,HttpStatus.BAD_REQUEST);
 	}
 	
@@ -59,6 +65,7 @@ public class StudentControllerAdvice {
 		customError.setTimestamp(LocalDateTime.now());
 		customError.setStatus((HttpStatus.NOT_FOUND.value()));
 		customError.setErrorCode(HttpStatus.BAD_REQUEST);
+		log.error("Error Details:= {}", customError.toString());
 		return new ResponseEntity<CustomError>(customError ,HttpStatus.BAD_REQUEST);
 	}
 }
