@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.registry.eureka</groupId>
-	<artifactId>consul-service</artifactId>
+	<artifactId>eureka-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>consul-service</name>
-	<description>Consul Registry for Spring Boot</description>
+	<name>eureka-service</name>
+	<description>Eureka Registry for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
