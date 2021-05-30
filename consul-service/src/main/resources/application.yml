@@ -1,0 +1,19 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://prateek:prateek@localhost:8761/eureka
+      
+spring:
+  security:
+    basic:
+     enabled: true
+    user:
+     name: prateek
+     password: prateek
