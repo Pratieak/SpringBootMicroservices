@@ -8,7 +8,7 @@
 		<version>2.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.consul</groupId>
+	<groupId>com.registry.eureka</groupId>
 	<artifactId>consul-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>consul-service</name>
