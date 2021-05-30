@@ -15,6 +15,7 @@ import com.student.exception.EmptyInputException;
 import com.student.exception.InvalidTelephoneNumberException;
 import com.student.exception.NoRecordExistsException;
 import com.student.model.CustomError;
+import com.student.utils.StudentConstant;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,8 +36,8 @@ public class StudentControllerAdvice {
 		customError.setTimestamp(LocalDateTime.now());
 		customError.setStatus((HttpStatus.NOT_FOUND.value()));
 		customError.setErrorCode(HttpStatus.BAD_REQUEST);
-		log.error("Error Details:= {}", customError.toString());
-		return new ResponseEntity<CustomError>(customError,HttpStatus.BAD_REQUEST);
+		log.error(StudentConstant.ERROR_DETAILS, customError.toString());
+		return new ResponseEntity<>(customError,HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(EmptyInputException.class)
@@ -45,8 +46,8 @@ public class StudentControllerAdvice {
 		customError.setTimestamp(LocalDateTime.now());
 		customError.setStatus((HttpStatus.NOT_FOUND.value()));
 		customError.setErrorCode(HttpStatus.BAD_REQUEST);
-		log.error("Error Details:= {}", customError.toString());
-		return new ResponseEntity<CustomError>(customError,HttpStatus.BAD_REQUEST);
+		log.error(StudentConstant.ERROR_DETAILS, customError.toString());
+		return new ResponseEntity<>(customError,HttpStatus.BAD_REQUEST);
 	}	
 	
 	@ExceptionHandler(NoRecordExistsException.class)
@@ -55,8 +56,8 @@ public class StudentControllerAdvice {
 		customError.setTimestamp(LocalDateTime.now());
 		customError.setStatus((HttpStatus.NOT_FOUND.value()));
 		customError.setErrorCode(HttpStatus.BAD_REQUEST);
-		log.error("Error Details:= {}", customError.toString());
-		return new ResponseEntity<CustomError>(customError,HttpStatus.BAD_REQUEST);
+		log.error(StudentConstant.ERROR_DETAILS, customError.toString());
+		return new ResponseEntity<>(customError,HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(InvalidTelephoneNumberException.class)
@@ -65,7 +66,7 @@ public class StudentControllerAdvice {
 		customError.setTimestamp(LocalDateTime.now());
 		customError.setStatus((HttpStatus.NOT_FOUND.value()));
 		customError.setErrorCode(HttpStatus.BAD_REQUEST);
-		log.error("Error Details:= {}", customError.toString());
-		return new ResponseEntity<CustomError>(customError ,HttpStatus.BAD_REQUEST);
+		log.error(StudentConstant.ERROR_DETAILS, customError.toString());
+		return new ResponseEntity<>(customError ,HttpStatus.BAD_REQUEST);
 	}
 }

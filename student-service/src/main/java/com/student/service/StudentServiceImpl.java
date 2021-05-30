@@ -31,16 +31,16 @@ public class StudentServiceImpl implements StudentService {
 		if(student.getFirstName().isEmpty() || student.getClassNumber().isEmpty() 
 				|| student.getSectionName().isEmpty() || student.getEnrollmentNumber().isEmpty()
 				|| student.getPhoneNumber().isEmpty() || student.getGuardianNumber().isEmpty())
-			throw new EmptyInputException("601", "One or more input value/s are empty");
+			throw new EmptyInputException("601 One or more input value/s are empty");
 		if( student.getPhoneNumber().length()!=10 || student.getGuardianNumber().length()!=10 )
-			throw new InvalidTelephoneNumberException("406","Invalid TelephoneNumber");
+			throw new InvalidTelephoneNumberException("406 Invalid TelephoneNumber");
 		studentRepository.insert(student);
 	}
 
 	@Override
 	public Student getStudentDetails(String enrollmentNumber) {	
 		if(studentRepository.findByEnrollmentNumber(enrollmentNumber)==null)
-			throw new NoRecordExistsException("404", "Student Record Not Found");
+			throw new NoRecordExistsException("404 Student Record Not Found");
 		return studentRepository.findByEnrollmentNumber(enrollmentNumber);
 	}
 
@@ -50,26 +50,26 @@ public class StudentServiceImpl implements StudentService {
 		if(s!= null) {
 			if(student.getPhoneNumber().isEmpty() || student.getEmailId().isEmpty()
 			   || student.getAddress().isEmpty() || student.getGuardianNumber().isEmpty())
-				throw new EmptyInputException("601", "One or more input value/s are empty");
+				throw new EmptyInputException("601 One or more input value/s are empty");
 			s.setEmailId(student.getEmailId());
 			s.setPhoneNumber(student.getPhoneNumber());
 			s.setGuardianNumber(student.getGuardianNumber());
 			s.setAddress(student.getAddress());
 			studentRepository.save(s);
-		} else throw new NoRecordExistsException("404", "Student Record Not Found");
+		} else throw new NoRecordExistsException("404 Student Record Not Found");
 	}
 
 	@Override
 	public List<Student> getAllStudentDetails() {	
 		if(studentRepository.findAll().isEmpty())
-			throw new NoRecordExistsException("404", "No Record Found");
+			throw new NoRecordExistsException("404 No Record Found");
 		return studentRepository.findAll();
 	}
 
 	@Override
 	public void deleteStudent(String enrollmentNumber) {
 		if(studentRepository.findByEnrollmentNumber(enrollmentNumber)==null)
-			throw new NoRecordExistsException("404", "No Record Found");
+			throw new NoRecordExistsException("404 No Record Found");
 		studentRepository.deleteByEnrollmentNumber(enrollmentNumber);
 	}
 

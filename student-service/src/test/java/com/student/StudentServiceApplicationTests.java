@@ -10,19 +10,23 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 
+import com.student.controller.Controller;
 import com.student.model.Student;
 
 @SpringBootTest
 class StudentServiceApplicationTests {
 
+	private Controller controller = new Controller();
+	
 	@Test
 	void contextLoads() {
+		assertThat(controller).isNotNull();
 	}
 	
 	private TestRestTemplate restTemplate = new TestRestTemplate();
 
 	@Test
-	public void testRegisterStudentDetailAPI() throws Exception {
+	void testRegisterStudentDetailAPI() throws Exception {
 		Student student = new Student();
 		student.setFirstName("TestName");
 		student.setLastName("LastTestName");
@@ -41,20 +45,20 @@ class StudentServiceApplicationTests {
 	}
 	
 	@Test
-	public void testRetrieveStudentDetailAPI() throws Exception {
+	void testRetrieveStudentDetailAPI() throws Exception {
 		assertThat(this.restTemplate.getForObject("http://localhost:8080/student/getStudent/Test02",
 				String.class)).contains("TestName");
 	}
 	
 	@Test
-	public void testRetrieveAllStudentDetailAPI() throws Exception {
+	void testRetrieveAllStudentDetailAPI() throws Exception {
 		assertThat(this.restTemplate.getForObject("http://localhost:8080/student/getAll",
 				String.class)).contains("TestName");
 	}
 	
 
 	@Test
-	public void testupdateStudentDetailAPI() throws Exception {
+	void testupdateStudentDetailAPI() throws Exception {
 		Student student = new Student();
 		student.setFirstName("TestName");
 		student.setLastName("LastTestName");
@@ -74,7 +78,7 @@ class StudentServiceApplicationTests {
 	}
 	
 	@Test
-	public void testDeleteStudentDetailAPI() throws Exception {
+	void testDeleteStudentDetailAPI() throws Exception {
 		restTemplate.delete(new URI("http://localhost:8080/student/deleteStudent/Test01"));
 		assertThat(this.restTemplate.getForObject("http://localhost:8080/student/getStudent/Test01",
 				String.class)).contains("No Record Exists");

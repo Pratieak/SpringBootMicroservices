@@ -59,7 +59,7 @@ public class Controller {
 	public ResponseEntity<Student> getStudent(@PathVariable String enrollmentNumber){
 		log.info( "***** GET: ReqestEntity- student enrollNumber  = {}", enrollmentNumber );
 		log.info( "***** GET: ResponseEntity- student object = {}", studentService.getStudentDetails(enrollmentNumber).toString() );
-		return new ResponseEntity<Student>(studentService.getStudentDetails(enrollmentNumber),HttpStatus.OK);
+		return new ResponseEntity<>(studentService.getStudentDetails(enrollmentNumber),HttpStatus.OK);
 	}
 	
 	
@@ -81,7 +81,7 @@ public class Controller {
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Student>> getAllStudents(){
 		log.info( "***** GET: ResponseEntity- student object = {}", studentService.getAllStudentDetails().toString() );
-		return new ResponseEntity<List<Student>>( studentService.getAllStudentDetails(),HttpStatus.OK);
+		return new ResponseEntity<>( studentService.getAllStudentDetails(),HttpStatus.OK);
 	}
 
 	

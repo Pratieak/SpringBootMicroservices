@@ -1,7 +1,6 @@
 package com.student.model;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
 
@@ -10,8 +9,6 @@ import lombok.Data;
  *
  */
 
-
-@Document(collection = "Student")
 @Data
 public class Student {
 	
