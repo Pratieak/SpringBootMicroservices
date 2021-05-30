@@ -1,3 +1,6 @@
+application-description: This application is mainly for Student Registration - register, retrieve, update and delete student records
+application-version: 0.0.1
+
 spring:
   application:
     name: student-service
@@ -11,5 +14,7 @@ springdoc:
    operationsSorter: alpha
    supportedSubmitMethods: get, put, post, delete, options, head, patch, trace
    
-application-description: This application is mainly for Student Registration - register, retrieve, update and delete student records
-application-version: 0.0.1
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
