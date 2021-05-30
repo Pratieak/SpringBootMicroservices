@@ -47,11 +47,16 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public void updateStudentDetails(Student student) {
 		Student s = studentRepository.findByEnrollmentNumber(student.getEnrollmentNumber());
-		s.setEmailId(student.getEmailId());
-		s.setPhoneNumber(student.getPhoneNumber());
-		s.setGuardianNumber(student.getGuardianNumber());
-		s.setAddress(student.getAddress());
-		studentRepository.save(s);
+		if(s!= null) {
+			if(student.getPhoneNumber().isEmpty() || student.getEmailId().isEmpty()
+			   || student.getAddress().isEmpty() || student.getGuardianNumber().isEmpty())
+				throw new EmptyInputException("601", "One or more input value/s are empty");
+			s.setEmailId(student.getEmailId());
+			s.setPhoneNumber(student.getPhoneNumber());
+			s.setGuardianNumber(student.getGuardianNumber());
+			s.setAddress(student.getAddress());
+			studentRepository.save(s);
+		} else throw new NoRecordExistsException("404", "Student Record Not Found");
 	}
 
 	@Override
