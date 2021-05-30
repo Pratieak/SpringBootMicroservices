@@ -45,7 +45,7 @@ public class Controller {
 					         @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true))) })	    
 	@PostMapping("/register")
 	public ResponseEntity<Object> register(@RequestBody Student student){
-		log.info( "***** ReqestEntity- student object = {}", student.toString() );
+		log.info( "***** POST: ReqestEntity- student object = {}", student.toString() );
 		studentService.registerStudent(student);
 		return new ResponseEntity<>(HttpStatus.CREATED);		
 	}
@@ -57,8 +57,8 @@ public class Controller {
 					         @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true))) })	    
 	@GetMapping("/getStudent/{enrollmentNumber}")
 	public ResponseEntity<Student> getStudent(@PathVariable String enrollmentNumber){
-		log.info( "***** ReqestEntity- student enrollNumber  = {}", enrollmentNumber );
-		log.info( "***** ResponseEntity- student object = {}", studentService.getStudentDetails(enrollmentNumber).toString() );
+		log.info( "***** GET: ReqestEntity- student enrollNumber  = {}", enrollmentNumber );
+		log.info( "***** GET: ResponseEntity- student object = {}", studentService.getStudentDetails(enrollmentNumber).toString() );
 		return new ResponseEntity<Student>(studentService.getStudentDetails(enrollmentNumber),HttpStatus.OK);
 	}
 	
@@ -68,7 +68,7 @@ public class Controller {
 				             @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true))) })	    
 	@PutMapping("/update")
 	public  ResponseEntity<Object> update(@RequestBody Student student){
-		log.info( "***** ReqestEntity- student object = {}", student.toString() );
+		log.info( "***** PUT: ReqestEntity- student object = {}", student.toString() );
 		studentService.updateStudentDetails(student);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
@@ -80,7 +80,7 @@ public class Controller {
 					   		 @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true)))})	    
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Student>> getAllStudents(){
-		log.info( "***** ResponseEntity- student object = {}", studentService.getAllStudentDetails().toString() );
+		log.info( "***** GET: ResponseEntity- student object = {}", studentService.getAllStudentDetails().toString() );
 		return new ResponseEntity<List<Student>>( studentService.getAllStudentDetails(),HttpStatus.OK);
 	}
 
@@ -91,7 +91,7 @@ public class Controller {
 			   		 		  @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true)))})	    
 	@DeleteMapping("/deleteStudent/{enrollmentNumber}")
 	public ResponseEntity<Object> deleteStudent(@PathVariable String enrollmentNumber){
-		log.info( "***** ReqestEntity- student enrollNumber  = {}", enrollmentNumber );
+		log.info( "***** DELETE: ReqestEntity- student enrollNumber  = {}", enrollmentNumber );
 		studentService.deleteStudent(enrollmentNumber);
 		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}
