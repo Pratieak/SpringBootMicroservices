@@ -4,3 +4,12 @@ spring:
   data:
     mongodb:
      uri: mongodb://localhost:27017/STUDENT_TEST
+     
+springdoc:
+ swagger-ui:
+   path: /swagger_ui
+   operationsSorter: alpha
+   supportedSubmitMethods: get, put, post, delete, options, head, patch, trace
+   
+application-description: This application is mainly for Student Registration - register, retrieve, update and delete student records
+application-version: 0.0.1

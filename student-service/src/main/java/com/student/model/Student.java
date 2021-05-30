@@ -9,6 +9,8 @@ import lombok.Data;
  * @author Prateek Maurya
  *
  */
+
+
 @Document(collection = "Student")
 @Data
 public class Student {
