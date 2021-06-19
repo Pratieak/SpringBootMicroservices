@@ -5,6 +5,8 @@ package com.student.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +46,7 @@ public class Controller {
 			    responses = { @ApiResponse( responseCode = "203", description = "Successful Operation", content = @Content),
 					         @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true))) })	    
 	@PostMapping("/register")
-	public ResponseEntity<Object> register(@RequestBody Student student){
+	public ResponseEntity<Object> register(@Valid @RequestBody Student student){
 		log.info( "***** POST: ReqestEntity- student object = {}", student.toString() );
 		studentService.registerStudent(student);
 		return new ResponseEntity<>(HttpStatus.CREATED);		
@@ -67,7 +69,7 @@ public class Controller {
 			   	responses = { @ApiResponse( responseCode = "201", description = "Successful Operation", content = @Content),
 				             @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true))) })	    
 	@PutMapping("/update")
-	public  ResponseEntity<Object> update(@RequestBody Student student){
+	public  ResponseEntity<Object> update(@Valid @RequestBody Student student){
 		log.info( "***** PUT: ReqestEntity- student object = {}", student.toString() );
 		studentService.updateStudentDetails(student);
 		return new ResponseEntity<>(HttpStatus.CREATED);
