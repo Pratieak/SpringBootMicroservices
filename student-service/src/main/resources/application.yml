@@ -10,10 +10,13 @@ spring:
      
 springdoc:
  swagger-ui:
-   path: /swagger_ui
+   path: /swagger-ui.html
    operationsSorter: alpha
    supportedSubmitMethods: get, put, post, delete, options, head, patch, trace
    
+server:
+ port: 9191
+ 
 eureka:
   client:
     serviceUrl:

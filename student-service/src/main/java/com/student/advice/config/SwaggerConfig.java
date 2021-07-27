@@ -17,11 +17,11 @@ import io.swagger.v3.oas.models.info.License;
  */
 
 @Configuration
-public class Beans {
+public class SwaggerConfig {
 	
 	@Bean
     public OpenAPI customOpenAPI(@Value("${application-description}") String appDesciption, @Value("${application-version}") String appVersion) {
-     return new OpenAPI() .info(new Info() .title("sample application API").version(appVersion) .description(appDesciption)
+     return new OpenAPI() .info(new Info() .title("Student Service API").version(appVersion) .description(appDesciption)
     		 .termsOfService("http://swagger.io/terms/").license(new License().name("GNU General Public License v3").url("https://www.gnu.org/licenses/gpl-3.0.en.html")));
     }
 

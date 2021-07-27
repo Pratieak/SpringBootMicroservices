@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.student.model.Student;
 import com.student.service.StudentService;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -47,7 +48,7 @@ public class Controller {
 					         @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true))) })	    
 	@PostMapping("/register")
 	public ResponseEntity<Object> register(@Valid @RequestBody Student student){
-		log.info( "***** POST: ReqestEntity- student object = {}", student.toString() );
+		log.info( "***** POST: RequestEntity- student object = {}", student.toString() );
 		studentService.registerStudent(student);
 		return new ResponseEntity<>(HttpStatus.CREATED);		
 	}
@@ -70,7 +71,7 @@ public class Controller {
 				             @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true))) })	    
 	@PutMapping("/update")
 	public  ResponseEntity<Object> update(@Valid @RequestBody Student student){
-		log.info( "***** PUT: ReqestEntity- student object = {}", student.toString() );
+		log.info( "***** PUT: RequestEntity- student object = {}", student.toString() );
 		studentService.updateStudentDetails(student);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
@@ -93,7 +94,7 @@ public class Controller {
 			   		 		  @ApiResponse( responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true)))})	    
 	@DeleteMapping("/deleteStudent/{enrollmentNumber}")
 	public ResponseEntity<Object> deleteStudent(@PathVariable String enrollmentNumber){
-		log.info( "***** DELETE: ReqestEntity- student enrollNumber  = {}", enrollmentNumber );
+		log.info( "***** DELETE: RequestEntity- student enrollNumber  = {}", enrollmentNumber );
 		studentService.deleteStudent(enrollmentNumber);
 		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}
