@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.student.model.Student;
 import com.student.service.StudentService;
 
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -37,6 +37,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("/student")
 @RestController
+@SecurityRequirement(name="studentservice")
 public class Controller {
 	
 	@Autowired
